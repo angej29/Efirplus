@@ -18,7 +18,7 @@ jobs:
 
       - name: Unpack sources
         run: |
-          f=$(git log -1 --format= --name-only --diff-filter=AM -- 'src*.zip' | head -1)
+          f=$(git log -1 --format= --name-only --diff-filter=AM -- 'src*.zip' | grep -v '^$' | head -1)
           echo "Archive: $f"
           unzip -o -q "$f"
           cat > build.gradle.kts <<'EOF'
